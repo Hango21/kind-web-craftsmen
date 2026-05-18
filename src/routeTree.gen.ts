@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as PracticalInformationRouteImport } from './routes/practical-information'
+import { Route as OurSchoolRouteImport } from './routes/our-school'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AdmissionsRouteImport } from './routes/admissions'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticalInformationRoute = PracticalInformationRouteImport.update({
+  id: '/practical-information',
+  path: '/practical-information',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurSchoolRoute = OurSchoolRouteImport.update({
+  id: '/our-school',
+  path: '/our-school',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdmissionsRoute = AdmissionsRouteImport.update({
+  id: '/admissions',
+  path: '/admissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/our-school': typeof OurSchoolRoute
+  '/practical-information': typeof PracticalInformationRoute
+  '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/our-school': typeof OurSchoolRoute
+  '/practical-information': typeof PracticalInformationRoute
+  '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admissions': typeof AdmissionsRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/our-school': typeof OurSchoolRoute
+  '/practical-information': typeof PracticalInformationRoute
+  '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/careers'
+    | '/contact'
+    | '/our-school'
+    | '/practical-information'
+    | '/register'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/careers'
+    | '/contact'
+    | '/our-school'
+    | '/practical-information'
+    | '/register'
+    | '/sitemap.xml'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admissions'
+    | '/careers'
+    | '/contact'
+    | '/our-school'
+    | '/practical-information'
+    | '/register'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdmissionsRoute: typeof AdmissionsRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  OurSchoolRoute: typeof OurSchoolRoute
+  PracticalInformationRoute: typeof PracticalInformationRoute
+  RegisterRoute: typeof RegisterRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practical-information': {
+      id: '/practical-information'
+      path: '/practical-information'
+      fullPath: '/practical-information'
+      preLoaderRoute: typeof PracticalInformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-school': {
+      id: '/our-school'
+      path: '/our-school'
+      fullPath: '/our-school'
+      preLoaderRoute: typeof OurSchoolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admissions': {
+      id: '/admissions'
+      path: '/admissions'
+      fullPath: '/admissions'
+      preLoaderRoute: typeof AdmissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +217,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdmissionsRoute: AdmissionsRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  OurSchoolRoute: OurSchoolRoute,
+  PracticalInformationRoute: PracticalInformationRoute,
+  RegisterRoute: RegisterRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,0 +1,89 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHero } from "@/components/site/PageHero";
+import { Footer } from "@/components/site/Footer";
+import { SectionTitle } from "@/components/site/SectionTitle";
+import { MapPin, Mail, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+
+export const Route = createFileRoute("/contact")({
+  head: () => ({
+    meta: [
+      { title: "Contact — NOVA International School" },
+      { name: "description", content: "Get in touch with NOVA International School. Address, phone, email and admissions contact form." },
+    ],
+  }),
+  component: Contact,
+});
+
+function Contact() {
+  const [sending, setSending] = useState(false);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    setTimeout(() => {
+      setSending(false);
+      (e.target as HTMLFormElement).reset();
+      toast.success("Message sent! We'll get back to you shortly.");
+    }, 700);
+  }
+
+  return (
+    <div className="min-h-screen bg-background">
+      <PageHero
+        eyebrow="Contact"
+        title="We'd love to hear from you"
+        subtitle="Reach our admissions team for tours, enquiries, and partnership opportunities."
+      />
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12">
+        <div>
+          <SectionTitle eyebrow="Contact Information" title="Get in touch" />
+          <ul className="mt-8 space-y-5">
+            <li className="flex gap-4">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><MapPin/></div>
+              <div><div className="font-semibold">Address</div><div className="text-sm text-muted-foreground">Lemikura Sub-City, Salite Mihiret Area, Addis Ababa, Ethiopia</div></div>
+            </li>
+            <li className="flex gap-4">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><Phone/></div>
+              <div><div className="font-semibold">Phone</div><div className="text-sm text-muted-foreground">+251 XXX XXX XXX</div></div>
+            </li>
+            <li className="flex gap-4">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><Mail/></div>
+              <div>
+                <div className="font-semibold">Email</div>
+                <div className="text-sm text-muted-foreground">info@novaschool.et</div>
+                <div className="text-sm text-muted-foreground">admissions@novaschool.et</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <form onSubmit={onSubmit} className="bg-card rounded-3xl border border-border p-8 shadow-[var(--shadow-soft)] space-y-4">
+          <h3 className="font-display font-bold text-xl text-primary">Send us a message</h3>
+          {[
+            { name: "name", label: "Full Name", type: "text" },
+            { name: "email", label: "Email", type: "email" },
+            { name: "phone", label: "Phone Number", type: "tel" },
+            { name: "subject", label: "Subject", type: "text" },
+          ].map((f) => (
+            <div key={f.name}>
+              <label className="text-xs font-semibold text-foreground">{f.label}</label>
+              <input required name={f.name} type={f.type} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"/>
+            </div>
+          ))}
+          <div>
+            <label className="text-xs font-semibold text-foreground">Message</label>
+            <textarea required name="message" rows={4} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"/>
+          </div>
+          <button disabled={sending} className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3 font-semibold hover:bg-primary-deep transition">
+            {sending ? "Sending…" : (<>Send Message <Send size={16}/></>)}
+          </button>
+        </form>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}
