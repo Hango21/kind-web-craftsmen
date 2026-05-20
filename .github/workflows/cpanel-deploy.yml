@@ -23,26 +23,24 @@ jobs:
       - name: 🏗️ Build React App
         run: npm run build
         
-      - name: 🚀 Deploy Frontend to cPanel (public_html)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: 🚀 Deploy Frontend to cPanel via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
-          dangerous-clean-slate: false
-          
-      - name: 🚀 Deploy Backend to cPanel (backend folder)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+          port: 22
+          local_path: ./dist/*
+          remote_path: /public_html/
+          sftp_only: true
+
+      - name: 🚀 Deploy Backend to cPanel via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./backend/
-          server-dir: /backend/
-          dangerous-clean-slate: false
+          port: 22
+          local_path: ./backend/*
+          remote_path: /backend/
+          sftp_only: true
