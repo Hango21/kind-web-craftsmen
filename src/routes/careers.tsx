@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { Mail } from "lucide-react";
+import { usePageContent } from "@/lib/page-content";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -18,12 +19,13 @@ const openings = ["Early Childhood Teachers","Primary Teachers","Secondary Subje
 const why = ["Professional Development","Collaborative Culture","Competitive Compensation","International Curriculum Experience","Teacher Empowerment"];
 
 function Careers() {
+  const { t } = usePageContent("careers");
   return (
     <div className="min-h-screen bg-background">
       <PageHero
         eyebrow="Careers"
-        title="Join a school built by visionary educators"
-        subtitle="NOVA seeks passionate, qualified, and innovative educators and professionals committed to academic excellence and holistic student development."
+        title={t("hero_title")}
+        subtitle={t("hero_subtitle")}
       />
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12">
@@ -55,10 +57,10 @@ function Careers() {
             <span className="gold-underline">Send us your CV</span>
           </h2>
           <p className="mt-6 text-primary-foreground/85">
-            Submit your CV, Cover Letter, Academic Credentials and References to our careers team.
+            {t("careers_invite")}
           </p>
-          <a href="mailto:careers@novaschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-3.5 font-semibold">
-            <Mail size={16}/> careers@novaschool.et
+          <a href={`mailto:${t("careers_email")}`} className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-3.5 font-semibold">
+            <Mail size={16}/> {t("careers_email")}
           </a>
         </div>
       </section>

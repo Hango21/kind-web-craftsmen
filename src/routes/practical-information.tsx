@@ -15,12 +15,6 @@ export const Route = createFileRoute("/practical-information")({
   component: Practical,
 });
 
-
-  ["Early Childhood","8:00 AM – 2:00 PM"],
-  ["Primary School","8:00 AM – 3:00 PM"],
-  ["Secondary School","8:00 AM – 3:00 PM"],
-];
-
 function Practical() {
   const { t } = usePageContent("practical-information");
   const hours: [string, string][] = [
