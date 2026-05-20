@@ -6,6 +6,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import ec from "@/assets/early-childhood.jpg";
 import primary from "@/assets/primary.jpg";
 import secondary from "@/assets/secondary.jpg";
+import { usePageContent } from "@/lib/page-content";
 
 export const Route = createFileRoute("/admissions")({
   head: () => ({
@@ -35,12 +36,13 @@ const steps = [
 const docs = ["Birth Certificate","Passport Photos","Previous School Reports","Parent Identification","Medical Records"];
 
 function Admissions() {
+  const { t } = usePageContent("admissions");
   return (
     <div className="min-h-screen bg-background">
       <PageHero
         eyebrow="Admissions"
-        title="Welcoming families for September 2026"
-        subtitle="We welcome applications from families seeking high-quality international education with strong values and discipline."
+        title={t("hero_title")}
+        subtitle={t("hero_subtitle")}
       >
         <Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-gold-foreground hover:brightness-95">
           Start Application <ArrowRight size={16}/>
@@ -88,8 +90,8 @@ function Admissions() {
             </ul>
             <div className="mt-8 p-6 rounded-2xl bg-primary text-primary-foreground">
               <p className="text-gold uppercase tracking-[0.25em] text-xs font-bold mb-2">School Fees</p>
-              <p className="font-display text-2xl font-bold">Birr 300,000 / year</p>
-              <p className="text-primary-foreground/70 text-sm mt-2">Transparent tuition structure. Detailed fee breakdown shared during enrollment.</p>
+              <p className="font-display text-2xl font-bold">{t("fee_label")}</p>
+              <p className="text-primary-foreground/70 text-sm mt-2">{t("fee_note")}</p>
             </div>
           </div>
         </div>

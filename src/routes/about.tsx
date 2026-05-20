@@ -44,9 +44,7 @@ function AboutPage() {
           <div className="bg-card rounded-2xl p-8 border border-border shadow-[var(--shadow-soft)]">
             <p className="text-gold uppercase tracking-[0.25em] text-xs font-bold mb-3">Vision</p>
             <p className="text-foreground leading-relaxed">
-              To become one of Ethiopia's most trusted and future-ready international schools,
-              producing globally competent, ethically grounded, and academically excellent graduates
-              prepared for higher education and leadership worldwide.
+              {t("vision")}
             </p>
           </div>
           <div className="bg-primary text-primary-foreground rounded-2xl p-8 shadow-[var(--shadow-card)]">
@@ -79,10 +77,7 @@ function AboutPage() {
         <div>
           <SectionTitle eyebrow="Our Story" title="Born from a parental vision" />
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            NOVA International School emerged from a shared parental vision to create a world-class
-            educational institution that addresses the growing demand for globally recognized
-            education in Ethiopia. Our parent-investor model creates stronger accountability,
-            transparency, and long-term educational commitment.
+            {t("story")}
           </p>
           <h3 className="font-display font-bold text-xl text-primary mt-10 mb-4">Governance Model</h3>
           <ul className="grid sm:grid-cols-2 gap-3 text-sm">
