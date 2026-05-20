@@ -4,6 +4,7 @@ import { Footer } from "@/components/site/Footer";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { CheckCircle2 } from "lucide-react";
 import campus from "@/assets/campus.jpg";
+import { usePageContent } from "@/lib/page-content";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,24 +17,22 @@ export const Route = createFileRoute("/about")({
 });
 
 function AboutPage() {
+  const { t } = usePageContent("about");
   return (
     <div className="min-h-screen bg-background">
       <PageHero
         eyebrow="About Us"
-        title="A new chapter for international education in Ethiopia"
-        subtitle="NOVA International School was founded by visionary parents to deliver globally competitive education rooted in strong values, discipline, and character development."
+        title={t("hero_title")}
+        subtitle={t("hero_subtitle")}
       />
 
       {/* Chairman */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20">
         <SectionTitle eyebrow="Chairman's Welcome" title="A message from our Chairman" />
         <div className="mt-8 space-y-5 text-muted-foreground leading-relaxed">
-          <p>It is with great pride and a deep sense of responsibility that I welcome you to NOVA International School — a new and ambitious educational institution founded with a clear vision: to provide world-class international education in Ethiopia while nurturing disciplined, ethical, and future-ready young leaders.</p>
-          <p>Scheduled to commence operations in September 2026 in Addis Ababa, NOVA International School will offer the globally recognized Pearson curriculum across Early Childhood, Primary, and Secondary levels. Our goal is to prepare students to compete and succeed at the highest international standards while remaining deeply connected to Ethiopian values, culture, and identity.</p>
-          <p>What makes NOVA truly distinctive is our belief that education must go beyond academic achievement. We are committed to building a structured and values-driven learning environment where discipline, respect, accountability, punctuality, and academic integrity are embedded into everyday school life.</p>
-          <p>Equally important is our innovative parent-investor ownership model — a pioneering approach that places parents at the heart of the school's growth and governance.</p>
+          <p>{t("chairman_message")}</p>
           <p className="text-foreground font-semibold pt-4">
-            Ato Tadesse Ayanew<br/>
+            {t("chairman_name")}<br/>
             <span className="text-muted-foreground font-normal text-sm">Chairman of the Board, NOVA International School</span>
           </p>
         </div>
@@ -45,9 +44,7 @@ function AboutPage() {
           <div className="bg-card rounded-2xl p-8 border border-border shadow-[var(--shadow-soft)]">
             <p className="text-gold uppercase tracking-[0.25em] text-xs font-bold mb-3">Vision</p>
             <p className="text-foreground leading-relaxed">
-              To become one of Ethiopia's most trusted and future-ready international schools,
-              producing globally competent, ethically grounded, and academically excellent graduates
-              prepared for higher education and leadership worldwide.
+              {t("vision")}
             </p>
           </div>
           <div className="bg-primary text-primary-foreground rounded-2xl p-8 shadow-[var(--shadow-card)]">
@@ -80,10 +77,7 @@ function AboutPage() {
         <div>
           <SectionTitle eyebrow="Our Story" title="Born from a parental vision" />
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            NOVA International School emerged from a shared parental vision to create a world-class
-            educational institution that addresses the growing demand for globally recognized
-            education in Ethiopia. Our parent-investor model creates stronger accountability,
-            transparency, and long-term educational commitment.
+            {t("story")}
           </p>
           <h3 className="font-display font-bold text-xl text-primary mt-10 mb-4">Governance Model</h3>
           <ul className="grid sm:grid-cols-2 gap-3 text-sm">

@@ -3,6 +3,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { Clock, Bus, Utensils, ShieldCheck, Users, FileText } from "lucide-react";
+import { usePageContent } from "@/lib/page-content";
 
 export const Route = createFileRoute("/practical-information")({
   head: () => ({
@@ -14,25 +15,25 @@ export const Route = createFileRoute("/practical-information")({
   component: Practical,
 });
 
-const hours = [
-  ["Early Childhood","8:00 AM – 2:00 PM"],
-  ["Primary School","8:00 AM – 3:00 PM"],
-  ["Secondary School","8:00 AM – 3:00 PM"],
-];
-
 function Practical() {
+  const { t } = usePageContent("practical-information");
+  const hours: [string, string][] = [
+    ["Early Childhood", t("hours_ec")],
+    ["Primary School", t("hours_primary")],
+    ["Secondary School", t("hours_secondary")],
+  ];
   return (
     <div className="min-h-screen bg-background">
       <PageHero
         eyebrow="Practical Information"
-        title="Everything families need to know"
-        subtitle="Location, schedules, safety, and the day-to-day life that supports learning at NOVA."
+        title={t("hero_title")}
+        subtitle={t("hero_subtitle")}
       />
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12">
         <div>
           <SectionTitle eyebrow="Location" title="Find us in Addis Ababa" />
-          <p className="mt-6 text-muted-foreground">Lemikura Sub-City, Salite Mihiret Area, Addis Ababa, Ethiopia</p>
+          <p className="mt-6 text-muted-foreground">{t("address")}</p>
           <div className="mt-6 rounded-3xl overflow-hidden border border-border shadow-[var(--shadow-soft)] aspect-[16/10]">
             <iframe
               title="NOVA School Location"
