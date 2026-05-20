@@ -1,0 +1,17 @@
+---
+deployment:
+  tasks:
+    # 1. Export paths to Node.js (cPanel requires this to use npm commands)
+    - export PATH=/opt/cpanel/ea-nodejs18/bin/:$PATH
+    
+    # 2. Build the React Frontend
+    - npm install
+    - npm run build
+    
+    # 3. Move the compiled frontend website to the public_html folder
+    # IMPORTANT: Change 'yourcpuser' to your actual cPanel username
+    - /bin/cp -R dist/* /home/yourcpuser/public_html/
+    
+    # 4. Move the backend API to a separate folder 
+    - /bin/mkdir -p /home/yourcpuser/backend
+    - /bin/cp -R backend/* /home/yourcpuser/backend/

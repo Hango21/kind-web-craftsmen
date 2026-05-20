@@ -9,16 +9,27 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StaffRouteImport } from './routes/staff'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PracticalInformationRouteImport } from './routes/practical-information'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as OurSchoolRouteImport } from './routes/our-school'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -34,9 +45,34 @@ const PracticalInformationRoute = PracticalInformationRouteImport.update({
   path: '/practical-information',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OurSchoolRoute = OurSchoolRouteImport.update({
   id: '/our-school',
   path: '/our-school',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -71,10 +107,16 @@ export interface FileRoutesByFullPath {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
   '/our-school': typeof OurSchoolRoute
+  '/portal': typeof PortalRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -82,10 +124,16 @@ export interface FileRoutesByTo {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
   '/our-school': typeof OurSchoolRoute
+  '/portal': typeof PortalRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -94,10 +142,16 @@ export interface FileRoutesById {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/events': typeof EventsRoute
+  '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
+  '/news': typeof NewsRoute
   '/our-school': typeof OurSchoolRoute
+  '/portal': typeof PortalRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/staff': typeof StaffRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,10 +161,16 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/events'
+    | '/faq'
+    | '/gallery'
+    | '/news'
     | '/our-school'
+    | '/portal'
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
+    | '/staff'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -118,10 +178,16 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/events'
+    | '/faq'
+    | '/gallery'
+    | '/news'
     | '/our-school'
+    | '/portal'
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
+    | '/staff'
   id:
     | '__root__'
     | '/'
@@ -129,10 +195,16 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/events'
+    | '/faq'
+    | '/gallery'
+    | '/news'
     | '/our-school'
+    | '/portal'
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
+    | '/staff'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -141,14 +213,27 @@ export interface RootRouteChildren {
   AdmissionsRoute: typeof AdmissionsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  EventsRoute: typeof EventsRoute
+  FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
+  NewsRoute: typeof NewsRoute
   OurSchoolRoute: typeof OurSchoolRoute
+  PortalRoute: typeof PortalRoute
   PracticalInformationRoute: typeof PracticalInformationRoute
   RegisterRoute: typeof RegisterRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StaffRoute: typeof StaffRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -170,11 +255,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticalInformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/our-school': {
       id: '/our-school'
       path: '/our-school'
       fullPath: '/our-school'
       preLoaderRoute: typeof OurSchoolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -221,10 +341,16 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionsRoute: AdmissionsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  EventsRoute: EventsRoute,
+  FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
+  NewsRoute: NewsRoute,
   OurSchoolRoute: OurSchoolRoute,
+  PortalRoute: PortalRoute,
   PracticalInformationRoute: PracticalInformationRoute,
   RegisterRoute: RegisterRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StaffRoute: StaffRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

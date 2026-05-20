@@ -1,17 +1,17 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Menu, X, Moon, Sun, ChevronDown } from "lucide-react";
+import { Menu, X, Moon, Sun, ChevronDown, Search } from "lucide-react";
 import logo from "@/assets/nova-logo.png";
 import { useTheme } from "@/hooks/use-theme";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About Us", sub: [{ to: "/about", label: "Our Vision" }, { to: "/about", label: "Governance" }] },
-  { to: "/admissions", label: "Admissions", sub: [{ to: "/admissions", label: "How to Apply" }, { to: "/register", label: "Start Application" }] },
-  { to: "/our-school", label: "Our School", sub: [{ to: "/our-school", label: "Curriculum" }, { to: "/our-school", label: "Facilities" }] },
-  { to: "/practical-information", label: "Practical Info", sub: [{ to: "/practical-information", label: "Term Dates" }, { to: "/practical-information", label: "Transport" }] },
-  { to: "/careers", label: "Careers", sub: [{ to: "/careers", label: "Open Roles" }, { to: "/careers", label: "Why Join Us" }] },
-  { to: "/contact", label: "Contact", sub: [{ to: "/contact", label: "Get in Touch" }, { to: "/contact", label: "Location" }] },
+  { to: "/about", label: "About Us", sub: [{ to: "/about", label: "Our Vision" }, { to: "/staff", label: "Staff Directory" }, { to: "/gallery", label: "Gallery" }] },
+  { to: "/admissions", label: "Admissions", sub: [{ to: "/admissions", label: "How to Apply" }, { to: "/register", label: "Start Application" }, { to: "/faq", label: "FAQ" }] },
+  { to: "/our-school", label: "Our School", sub: [{ to: "/our-school", label: "Curriculum & Facilities" }, { to: "/news", label: "News & Updates" }, { to: "/events", label: "Events Calendar" }] },
+  { to: "/practical-information", label: "Practical Info", sub: [{ to: "/practical-information", label: "Term Dates & Transport" }, { to: "/documents", label: "Document Repository" }, { to: "/portal", label: "Parent Portal" }] },
+  { to: "/careers", label: "Careers", sub: [{ to: "/careers", label: "Open Roles" }, { to: "/staff", label: "Meet the Team" }] },
+  { to: "/contact", label: "Contact", sub: [{ to: "/contact", label: "Get in Touch" }, { to: "/faq", label: "FAQ" }] },
 ];
 
 export function Header() {
@@ -70,6 +70,13 @@ export function Header() {
 
         <div className="hidden lg:flex items-center gap-3">
           <button
+            aria-label="Search"
+            onClick={() => alert("Search functionality will be powered by PostgreSQL backend")}
+            className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
+          >
+            <Search size={18} />
+          </button>
+          <button
             aria-label="Toggle dark mode"
             onClick={toggle}
             className="inline-flex items-center justify-center h-10 w-10 rounded-full border border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
@@ -85,6 +92,13 @@ export function Header() {
         </div>
 
         <div className="lg:hidden flex items-center gap-1">
+          <button
+            aria-label="Search"
+            onClick={() => alert("Search functionality will be powered by PostgreSQL backend")}
+            className="text-primary-foreground p-2"
+          >
+            <Search size={22} />
+          </button>
           <button
             aria-label="Toggle dark mode"
             onClick={toggle}

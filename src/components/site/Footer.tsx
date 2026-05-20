@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Linkedin, Send, MapPin, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, MapPin, Mail, Phone } from "lucide-react";
 import logo from "@/assets/nova-logo.png";
 
 export function Footer() {
@@ -47,8 +47,13 @@ export function Footer() {
             <li className="flex gap-2"><Phone size={16} className="text-gold shrink-0 mt-0.5" /> +251 XXX XXX XXX</li>
           </ul>
           <div className="flex gap-3 mt-5">
-            {[Facebook, Instagram, Linkedin, Send].map((Icon, i) => (
-              <a key={i} href="#" className="h-9 w-9 rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold flex items-center justify-center transition-colors">
+            {[
+              { icon: Facebook, label: "Facebook" },
+              { icon: Instagram, label: "Instagram" },
+              { icon: Linkedin, label: "LinkedIn" },
+              { icon: Twitter, label: "X (Twitter)" },
+            ].map(({ icon: Icon, label }, i) => (
+              <a key={i} href="#" aria-label={label} className="h-9 w-9 rounded-full border border-primary-foreground/20 hover:border-gold hover:text-gold flex items-center justify-center transition-colors">
                 <Icon size={16} />
               </a>
             ))}
