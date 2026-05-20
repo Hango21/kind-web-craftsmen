@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import logo from "@/assets/nova-logo.png";
+import { useTheme } from "@/hooks/use-theme";
 
 const nav = [
   { to: "/", label: "Home" },
