@@ -13,16 +13,19 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <div className="relative bg-primary text-primary-foreground overflow-hidden">
+    <div className="relative bg-primary text-primary-foreground overflow-hidden torn-bottom pb-4">
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 bg-primary/70"
+      />
+      <div
+        className="absolute inset-0 mix-blend-overlay opacity-20"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 20%, oklch(0.79 0.15 80 / 0.4), transparent 40%), radial-gradient(circle at 80% 60%, oklch(0.5 0.18 260 / 0.5), transparent 50%)",
+            "radial-gradient(circle at 20% 20%, rgba(212, 175, 55, 0.4), transparent 40%), radial-gradient(circle at 80% 60%, rgba(43, 88, 126, 0.5), transparent 50%)",
         }}
       />
       <Header />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-36 pb-28 torn-bottom">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-36 pb-28">
         {eyebrow && (
           <p className="text-gold uppercase tracking-[0.25em] text-xs font-semibold mb-4">{eyebrow}</p>
         )}

@@ -31,16 +31,19 @@ function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* HERO */}
-      <section className="relative bg-primary text-primary-foreground overflow-hidden">
+      <section className="relative bg-primary text-primary-foreground overflow-hidden torn-bottom pb-4">
         <div
-          className="absolute inset-0 opacity-25"
+          className="absolute inset-0 bg-primary/70"
+        />
+        <div
+          className="absolute inset-0 mix-blend-overlay opacity-30"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 15% 20%, oklch(0.79 0.15 80 / 0.55), transparent 45%), radial-gradient(circle at 85% 70%, oklch(0.45 0.18 260 / 0.6), transparent 55%)",
+              "radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.55), transparent 45%), radial-gradient(circle at 85% 70%, rgba(43, 88, 126, 0.6), transparent 55%)",
           }}
         />
         <Header />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-32 torn-bottom">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-32">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <p className="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-5">Welcome to</p>

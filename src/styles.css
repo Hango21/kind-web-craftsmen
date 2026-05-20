@@ -42,95 +42,105 @@
 :root {
   --radius: 0.875rem;
 
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.2 0.04 260);
+  --background: #FFFFFF;
+  --foreground: #111827;
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.04 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.04 260);
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
 
-  /* Navy blue primary (matches Cambridge Academy reference) */
-  --primary: oklch(0.34 0.13 258);
-  --primary-foreground: oklch(0.99 0 0);
-  --primary-deep: oklch(0.26 0.12 260);
+  /* Primary Blue (Slate Blue) */
+  --primary: #2B587E;
+  --primary-foreground: #FFFFFF;
+  --primary-deep: #1E405C;
 
-  /* Soft warm background */
-  --secondary: oklch(0.97 0.01 90);
-  --secondary-foreground: oklch(0.25 0.04 260);
+  /* Section Background */
+  --secondary: #F8FAFF;
+  --secondary-foreground: #111827;
 
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.5 0.03 260);
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
 
-  --accent: oklch(0.95 0.04 85);
-  --accent-foreground: oklch(0.25 0.04 260);
+  --accent: #EFF6FF;
+  --accent-foreground: #111827;
 
-  /* Gold accent */
-  --gold: oklch(0.79 0.15 80);
-  --gold-foreground: oklch(0.22 0.04 260);
+  /* Accent Gold */
+  --gold: #D4AF37;
+  --gold-foreground: #FFFFFF;
 
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.99 0 0);
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
 
-  --border: oklch(0.92 0.01 260);
-  --input: oklch(0.92 0.01 260);
-  --ring: oklch(0.34 0.13 258);
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #2B587E;
 
-  --gradient-hero: linear-gradient(120deg, oklch(0.34 0.13 258 / 0.85) 0%, oklch(0.79 0.15 80 / 0.7) 100%);
-  --shadow-card: 0 10px 30px -12px oklch(0.34 0.13 258 / 0.25);
-  --shadow-soft: 0 4px 14px -4px oklch(0.34 0.13 258 / 0.15);
+  --gradient-hero: linear-gradient(120deg, rgba(43, 88, 126, 0.85) 0%, rgba(212, 175, 55, 0.7) 100%);
+  --shadow-card: 0 10px 30px -12px rgba(43, 88, 126, 0.15);
+  --shadow-soft: 0 4px 14px -4px rgba(43, 88, 126, 0.08);
 }
 
 .dark {
-  --background: oklch(0.16 0.02 260);
-  --foreground: oklch(0.96 0.01 90);
+  --background: #F8F9FA;
+  --foreground: #1E1E1E;
 
-  --card: oklch(0.21 0.03 260);
-  --card-foreground: oklch(0.96 0.01 90);
-  --popover: oklch(0.21 0.03 260);
-  --popover-foreground: oklch(0.96 0.01 90);
+  --card: #FFFFFF;
+  --card-foreground: #1E1E1E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1E1E1E;
 
-  --primary: oklch(0.44 0.15 258);
-  --primary-foreground: oklch(0.99 0 0);
-  --primary-deep: oklch(0.30 0.12 260);
+  /* Primary (Midnight Navy) */
+  --primary: #0F1C2E;
+  --primary-foreground: #FFFFFF;
+  --primary-deep: #09111C;
 
-  --secondary: oklch(0.24 0.03 260);
-  --secondary-foreground: oklch(0.96 0.01 90);
+  /* Secondary Neutral (Cool Gray) */
+  --secondary: #6C757D;
+  --secondary-foreground: #FFFFFF;
 
-  --muted: oklch(0.24 0.02 260);
-  --muted-foreground: oklch(0.72 0.02 260);
+  --muted: #E9ECEF;
+  --muted-foreground: #6C757D;
 
-  --accent: oklch(0.28 0.05 85);
-  --accent-foreground: oklch(0.96 0.01 90);
+  --accent: #E9ECEF;
+  --accent-foreground: #1E1E1E;
 
-  --gold: oklch(0.82 0.16 80);
-  --gold-foreground: oklch(0.18 0.03 260);
+  /* Accent Color (Soft Gold) */
+  --gold: #C9A227;
+  --gold-foreground: #1E1E1E;
 
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.99 0 0);
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
 
-  --border: oklch(0.30 0.02 260);
-  --input: oklch(0.30 0.02 260);
-  --ring: oklch(0.44 0.15 258);
+  --border: #DEE2E6;
+  --input: #DEE2E6;
+  --ring: #0F1C2E;
 
-  --shadow-card: 0 10px 30px -12px oklch(0 0 0 / 0.6);
-  --shadow-soft: 0 4px 14px -4px oklch(0 0 0 / 0.5);
+  --shadow-card: 0 10px 30px -12px rgba(15, 28, 46, 0.15);
+  --shadow-soft: 0 4px 14px -4px rgba(15, 28, 46, 0.08);
 }
 
 @layer base {
   * {
     border-color: var(--color-border);
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3, h4, h5 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
@@ -141,6 +151,7 @@
     position: relative;
     display: inline-block;
   }
+
   .gold-underline::after {
     content: "";
     position: absolute;
@@ -152,12 +163,20 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+
   .torn-bottom {
-    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1200 60'><path d='M0 0 H1200 V40 Q1150 60 1100 45 T1000 40 T900 50 T800 38 T700 48 T600 40 T500 50 T400 38 T300 50 T200 42 T100 50 T0 40 Z' fill='black'/></svg>");
-    -webkit-mask-size: 100% 100%;
-    -webkit-mask-repeat: no-repeat;
-    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1200 60'><path d='M0 0 H1200 V40 Q1150 60 1100 45 T1000 40 T900 50 T800 38 T700 48 T600 40 T500 50 T400 38 T300 50 T200 42 T100 50 T0 40 Z' fill='black'/></svg>");
-    mask-size: 100% 100%;
-    mask-repeat: no-repeat;
+    -webkit-mask-image:
+      linear-gradient(to bottom, black 0%, black calc(100% - 60px)),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1200 60'><path d='M0 0 H1200 V40 Q1150 60 1100 45 T1000 40 T900 50 T800 38 T700 48 T600 40 T500 50 T400 38 T300 50 T200 42 T100 50 T0 40 Z' fill='black'/></svg>");
+    -webkit-mask-size: 100% calc(100% - 60px), 100% 60px;
+    -webkit-mask-position: top center, bottom center;
+    -webkit-mask-repeat: no-repeat, no-repeat;
+
+    mask-image:
+      linear-gradient(to bottom, black 0%, black calc(100% - 60px)),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 1200 60'><path d='M0 0 H1200 V40 Q1150 60 1100 45 T1000 40 T900 50 T800 38 T700 48 T600 40 T500 50 T400 38 T300 50 T200 42 T100 50 T0 40 Z' fill='black'/></svg>");
+    mask-size: 100% calc(100% - 60px), 100% 60px;
+    mask-position: top center, bottom center;
+    mask-repeat: no-repeat, no-repeat;
   }
 }
