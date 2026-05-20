@@ -13,11 +13,9 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PracticalInformationRouteImport } from './routes/practical-information'
 import { Route as OurSchoolRouteImport } from './routes/our-school'
-import { Route as LoginRouteImport } from './routes/login'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -41,11 +39,6 @@ const OurSchoolRoute = OurSchoolRouteImport.update({
   path: '/our-school',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -59,11 +52,6 @@ const CareersRoute = CareersRouteImport.update({
 const AdmissionsRoute = AdmissionsRouteImport.update({
   id: '/admissions',
   path: '/admissions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -80,11 +68,9 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/login': typeof LoginRoute
   '/our-school': typeof OurSchoolRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
@@ -93,11 +79,9 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/login': typeof LoginRoute
   '/our-school': typeof OurSchoolRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
@@ -107,11 +91,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
-  '/login': typeof LoginRoute
   '/our-school': typeof OurSchoolRoute
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
@@ -122,11 +104,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/admin'
     | '/admissions'
     | '/careers'
     | '/contact'
-    | '/login'
     | '/our-school'
     | '/practical-information'
     | '/register'
@@ -135,11 +115,9 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/admin'
     | '/admissions'
     | '/careers'
     | '/contact'
-    | '/login'
     | '/our-school'
     | '/practical-information'
     | '/register'
@@ -148,11 +126,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
-    | '/admin'
     | '/admissions'
     | '/careers'
     | '/contact'
-    | '/login'
     | '/our-school'
     | '/practical-information'
     | '/register'
@@ -162,11 +138,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
   AdmissionsRoute: typeof AdmissionsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
-  LoginRoute: typeof LoginRoute
   OurSchoolRoute: typeof OurSchoolRoute
   PracticalInformationRoute: typeof PracticalInformationRoute
   RegisterRoute: typeof RegisterRoute
@@ -203,13 +177,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurSchoolRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -229,13 +196,6 @@ declare module '@tanstack/react-router' {
       path: '/admissions'
       fullPath: '/admissions'
       preLoaderRoute: typeof AdmissionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -258,11 +218,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
   AdmissionsRoute: AdmissionsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
-  LoginRoute: LoginRoute,
   OurSchoolRoute: OurSchoolRoute,
   PracticalInformationRoute: PracticalInformationRoute,
   RegisterRoute: RegisterRoute,

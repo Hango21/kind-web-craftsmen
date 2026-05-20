@@ -16,7 +16,6 @@ import {
 import hero from "@/assets/hero-student.jpg";
 import collab from "@/assets/students-collab.jpg";
 import campus from "@/assets/campus.jpg";
-import { usePageContent } from "@/lib/page-content";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,7 +28,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const { t } = usePageContent("home");
   return (
     <div className="min-h-screen bg-background">
       {/* HERO */}
@@ -45,12 +43,14 @@ function Home() {
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-32 torn-bottom">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
-              <p className="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-5">{t("hero_eyebrow")}</p>
+              <p className="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-5">Welcome to</p>
               <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
-                {t("hero_title_main")} <span className="gold-underline">{t("hero_title_accent")}</span>
+                NOVA <span className="gold-underline">International School</span>
               </h1>
               <p className="mt-7 text-primary-foreground/85 text-base sm:text-lg max-w-xl leading-relaxed">
-                {t("hero_paragraph")}
+                A future-ready international school launching September 2026 in Addis Ababa.
+                Globally recognized Pearson curriculum delivered with strong values, discipline,
+                and character development.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link
@@ -121,9 +121,16 @@ function Home() {
       {/* PRODUCING GLOBAL LEADERS */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 items-center">
         <div>
-          <SectionTitle eyebrow="Our Promise" title={t("promise_title")} />
+          <SectionTitle eyebrow="Our Promise" title="Producing Global Leaders" />
           <p className="mt-6 text-muted-foreground leading-relaxed">
-            {t("promise_body")}
+            Welcome to <strong className="text-foreground">NOVA International School</strong> — a
+            new international learning community in Addis Ababa rooted in Ethiopian values with a
+            global outlook. We deliver the Pearson Edexcel curriculum to prepare students for the
+            world's leading universities and meaningful, ethical leadership.
+          </p>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Premium yet accessible international education with strong discipline, ethical
+            leadership, and holistic student development.
           </p>
           <Link
             to="/about"
@@ -188,10 +195,11 @@ function Home() {
               <div>
                 <p className="text-gold uppercase tracking-[0.25em] text-xs font-bold mb-3">Now Enrolling</p>
                 <h2 className="font-display font-bold text-3xl sm:text-4xl leading-tight">
-                  <span className="gold-underline">{t("cta_title")}</span> — September 2026.
+                  <span className="gold-underline">Join the NOVA family</span> — September 2026.
                 </h2>
                 <p className="mt-5 text-primary-foreground/80 max-w-xl">
-                  {t("cta_body")}
+                  Secure a place for your child at one of Addis Ababa's most ambitious new
+                  international schools.
                 </p>
               </div>
               <div className="flex lg:justify-end gap-3 flex-wrap">
