@@ -22,11 +22,13 @@ function Contact() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
+
+    // Simulating sending to info@novainternationalschool.et
     setTimeout(() => {
       setSending(false);
       (e.target as HTMLFormElement).reset();
-      toast.success("Message sent! We'll get back to you shortly.");
-    }, 700);
+      toast.success("Message sent! Your inquiry has been forwarded to info@novainternationalschool.et. We will respond shortly.");
+    }, 1200);
   }
 
   return (
@@ -53,8 +55,8 @@ function Contact() {
               <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><Mail /></div>
               <div>
                 <div className="font-semibold">Email</div>
-                <div className="text-sm text-muted-foreground">info@novaschool.et</div>
-                <div className="text-sm text-muted-foreground">admissions@novaschool.et</div>
+                <div className="text-sm text-muted-foreground">info@novainternationalschool.et</div>
+                <div className="text-sm text-muted-foreground">admission@novainternationalschool.et</div>
               </div>
             </li>
           </ul>

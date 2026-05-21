@@ -32,7 +32,7 @@ const steps = [
   "Enrollment Confirmation",
 ];
 
-const docs = ["Birth Certificate","Passport Photos","Previous School Reports","Parent Identification","Medical Records"];
+const docs = ["Birth Certificate", "Passport Photos", "Previous School Reports", "Parent Identification", "Medical Records"];
 
 function Admissions() {
   return (
@@ -43,9 +43,34 @@ function Admissions() {
         subtitle="We welcome applications from families seeking high-quality international education with strong values and discipline."
       >
         <Link to="/register" className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-gold-foreground hover:brightness-95">
-          Start Application <ArrowRight size={16}/>
+          Start Application <ArrowRight size={16} />
         </Link>
       </PageHero>
+
+      {/* Quick Facts Section */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/10 rounded-3xl p-8 sm:p-12 overflow-hidden relative">
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+          <div className="relative z-10">
+            <SectionTitle eyebrow="At a Glance" title="School Quick Facts" />
+            <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-8">
+              {[
+                { label: "Opening Date", value: "September 2026" },
+                { label: "Curriculum", value: "Pearson Edexcel" },
+                { label: "Location", value: "Lemikura Sub-City, Addis Ababa" },
+                { label: "Programs", value: "EC, Primary & Secondary" },
+                { label: "Campus Size", value: "6,000 m²" },
+                { label: "Learning Model", value: "International + Local Relevance" }
+              ].map((f) => (
+                <div key={f.label}>
+                  <div className="text-primary font-display font-bold text-xl mb-1">{f.value}</div>
+                  <div className="text-xs font-semibold text-muted-foreground uppercase tracking-widest">{f.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <SectionTitle eyebrow="Programs Offered" title="Three pathways. One vision." center />
@@ -53,7 +78,7 @@ function Admissions() {
           {programs.map((p) => (
             <div key={p.title} className="group rounded-3xl overflow-hidden bg-card border border-border shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-card)] transition">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={p.img} alt={p.title} loading="lazy" width={1024} height={768} className="w-full h-full object-cover group-hover:scale-105 transition duration-500"/>
+                <img src={p.img} alt={p.title} loading="lazy" width={1024} height={768} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
               </div>
               <div className="p-6">
                 <h3 className="font-display font-bold text-xl text-primary">{p.title}</h3>
@@ -71,7 +96,7 @@ function Admissions() {
             <ol className="mt-8 space-y-4">
               {steps.map((s, i) => (
                 <li key={s} className="flex gap-4 items-start bg-card rounded-xl p-4 border border-border">
-                  <div className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm shrink-0">{i+1}</div>
+                  <div className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm shrink-0">{i + 1}</div>
                   <div className="font-medium text-foreground">{s}</div>
                 </li>
               ))}
@@ -98,9 +123,9 @@ function Admissions() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
         <SectionTitle eyebrow="Why Parents Choose NOVA" title="A school worth choosing" center />
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {["International curriculum","Strong discipline culture","Transparent tuition structure","Technology-enabled learning","Holistic development"].map((r) => (
+          {["International curriculum", "Strong discipline culture", "Transparent tuition structure", "Technology-enabled learning", "Holistic development"].map((r) => (
             <div key={r} className="rounded-2xl border border-border p-5 text-center bg-card">
-              <CheckCircle2 className="text-gold mx-auto mb-3"/>
+              <CheckCircle2 className="text-gold mx-auto mb-3" />
               <div className="text-sm font-medium">{r}</div>
             </div>
           ))}

@@ -8,14 +8,14 @@ export const Route = createFileRoute("/careers")({
   head: () => ({
     meta: [
       { title: "Careers — NOVA International School" },
-      { name: "description", content: "Join NOVA International School. Open roles for teachers, counselors and administrative staff. Apply at careers@novaschool.et." },
+      { name: "description", content: "Join NOVA International School. Open roles for teachers, counselors and administrative staff. Apply at career@novainternationalschool.et." },
     ],
   }),
   component: Careers,
 });
 
-const openings = ["Early Childhood Teachers","Primary Teachers","Secondary Subject Teachers","ICT Teachers","School Counselors","Administrative Staff"];
-const why = ["Professional Development","Collaborative Culture","Competitive Compensation","International Curriculum Experience","Teacher Empowerment"];
+const openings = ["Early Childhood Teachers", "Primary Teachers", "Secondary Subject Teachers", "ICT Teachers", "School Counselors", "Administrative Staff"];
+const why = ["Professional Development", "Collaborative Culture", "Competitive Compensation", "International Curriculum Experience", "Teacher Empowerment"];
 
 function Careers() {
   return (
@@ -57,8 +57,8 @@ function Careers() {
           <p className="mt-6 text-primary-foreground/85">
             Submit your CV, Cover Letter, Academic Credentials and References to our careers team.
           </p>
-          <a href="mailto:careers@novaschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-3.5 font-semibold">
-            <Mail size={16}/> careers@novaschool.et
+          <a href="mailto:career@novainternationalschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-3.5 font-semibold">
+            <Mail size={16} /> career@novainternationalschool.et
           </a>
         </div>
       </section>

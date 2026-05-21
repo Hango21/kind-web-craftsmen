@@ -99,7 +99,7 @@ function Staff() {
                         <span className="gold-underline">We're hiring passionate educators</span>
                     </h2>
                     <p className="mt-4 text-primary-foreground/80 max-w-xl mx-auto">Interested in joining NOVA? We are looking for talented teachers and staff.</p>
-                    <a href="mailto:careers@novaschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-8 py-3.5 font-semibold">
+                    <a href="mailto:career@novainternationalschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-8 py-3.5 font-semibold">
                         <Mail size={16} /> Apply Now
                     </a>
                 </div>

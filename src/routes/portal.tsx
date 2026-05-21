@@ -15,12 +15,12 @@ export const Route = createFileRoute("/portal")({
 });
 
 const features = [
-    { icon: BookOpen, title: "Academic Dashboard", description: "View grades, report cards, transcripts, and track your child's academic progress in real time." },
-    { icon: MessageSquare, title: "Parent-Teacher Communication", description: "Directly message teachers and receive updates about your child's performance and classroom activities." },
-    { icon: CalendarDays, title: "Attendance & Schedule", description: "Monitor daily attendance records and view class timetables and upcoming school events." },
-    { icon: FileText, title: "Assignments & Homework", description: "Access homework assignments, submission deadlines, and downloadable learning resources." },
-    { icon: Bell, title: "Notifications & Alerts", description: "Receive instant notifications for school announcements, events, and important updates." },
-    { icon: GraduationCap, title: "Learning Resources", description: "Access digital textbooks, study materials, and supplementary educational content online." },
+    { icon: BookOpen, title: "Report Cards & Grades", description: "Parents can securely view and download their child's latest report cards and academic progress." },
+    { icon: MessageSquare, title: "Teacher Comments", description: "Read personalized feedback, behavioral comments, and performance notes directly from the teachers." },
+    { icon: FileText, title: "Fee Payment System", description: "Parents can conveniently view fee statements, track deadlines, and make online payments securely." },
+    { icon: CalendarDays, title: "School Calendar", description: "Stay up to date with class timetables, upcoming exams, holidays, and important school events." },
+    { icon: Bell, title: "Notifications & Alerts", description: "Receive instant notifications for school announcements, events, and important academic updates." },
+    { icon: GraduationCap, title: "Learning Resources", description: "Students can access digital textbooks, study materials, and supplementary educational content online." },
 ];
 
 function Portal() {
@@ -48,9 +48,19 @@ function Portal() {
                                 <h3 className="font-display font-bold text-lg text-foreground">Secure Login</h3>
                             </div>
                             <form className="space-y-4">
+                                <div className="flex gap-4 p-1 bg-secondary/50 rounded-xl mb-4">
+                                    <label className="flex-1 text-center cursor-pointer">
+                                        <input type="radio" name="role" defaultChecked className="peer sr-only" />
+                                        <div className="rounded-lg py-2 text-sm font-semibold text-muted-foreground peer-checked:bg-background peer-checked:text-foreground peer-checked:shadow-[var(--shadow-soft)] transition-all">Parent</div>
+                                    </label>
+                                    <label className="flex-1 text-center cursor-pointer">
+                                        <input type="radio" name="role" className="peer sr-only" />
+                                        <div className="rounded-lg py-2 text-sm font-semibold text-muted-foreground peer-checked:bg-background peer-checked:text-foreground peer-checked:shadow-[var(--shadow-soft)] transition-all">Student</div>
+                                    </label>
+                                </div>
                                 <div>
-                                    <label className="text-xs font-semibold text-foreground">Email or Student ID</label>
-                                    <input type="text" required placeholder="Enter your email or ID" className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40" />
+                                    <label className="text-xs font-semibold text-foreground">Email (Provided by Admin)</label>
+                                    <input type="email" required placeholder="Enter the email given by the school" className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40" />
                                 </div>
                                 <div>
                                     <label className="text-xs font-semibold text-foreground">Password</label>
@@ -58,18 +68,15 @@ function Portal() {
                                 </div>
                                 <div className="flex items-center justify-between text-sm">
                                     <label className="flex items-center gap-2">
-                                        <input type="checkbox" className="rounded border-input" />
+                                        <input type="checkbox" className="rounded border-input text-primary focus:ring-primary" />
                                         <span className="text-muted-foreground">Remember me</span>
                                     </label>
                                     <a href="#" className="text-primary hover:text-gold transition-colors font-medium">Forgot password?</a>
                                 </div>
-                                <button className="w-full rounded-full bg-primary text-primary-foreground py-3 font-semibold hover:bg-primary-deep transition">
+                                <Link to="/dashboard" className="w-full inline-flex justify-center rounded-full bg-primary text-primary-foreground py-3 font-semibold hover:bg-primary-deep transition">
                                     Sign In
-                                </button>
+                                </Link>
                             </form>
-                            <div className="mt-4 text-center text-xs text-muted-foreground">
-                                Don't have an account? <Link to="/register" className="text-primary font-semibold hover:text-gold">Register here</Link>
-                            </div>
                         </div>
                     </div>
 
@@ -79,10 +86,10 @@ function Portal() {
                         <div className="mt-8 grid gap-4">
                             {[
                                 { label: "Moodle Learning Management System", desc: "Access courses, assignments and digital classrooms", highlight: true },
-                                { label: "Download Report Cards", desc: "Access and download your child's latest academic reports", highlight: false },
-                                { label: "Fee Payment Portal", desc: "View fee statements and make online payments securely", highlight: false },
-                                { label: "School Calendar", desc: "View upcoming events, holidays and important dates", highlight: false },
-                                { label: "Transport Tracker", desc: "Track school bus routes and real-time location", highlight: false },
+                                { label: "Student Report Cards", desc: "Parents can securely download their child's academic reports", highlight: false },
+                                { label: "Teacher Comments", desc: "View personalized feedback and behavioral comments", highlight: false },
+                                { label: "Tuition & Fee Payment", desc: "View statements and make secure online payments", highlight: false },
+                                { label: "School Calendar", desc: "View upcoming exams, holidays, and important events", highlight: false },
                             ].map((q) => (
                                 <div key={q.label} className={`rounded-xl border p-5 flex items-center justify-between gap-4 transition-colors group cursor-pointer ${q.highlight ? "bg-primary/5 border-primary shadow-[var(--shadow-soft)] hover:bg-primary hover:text-primary-foreground text-foreground" : "bg-card border-border hover:border-primary text-foreground"}`}>
                                     <div className="flex items-start gap-3">
@@ -126,7 +133,7 @@ function Portal() {
                         <span className="gold-underline">IT Support & Portal Assistance</span>
                     </h2>
                     <p className="mt-4 text-primary-foreground/80 max-w-xl mx-auto">Having trouble logging in? Contact our IT helpdesk for immediate assistance.</p>
-                    <a href="mailto:itsupport@novaschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-8 py-3.5 font-semibold">
+                    <a href="mailto:info@novainternationalschool.et" className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-8 py-3.5 font-semibold">
                         Contact IT Support
                     </a>
                 </div>

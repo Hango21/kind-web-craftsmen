@@ -19,6 +19,8 @@ import { Route as NewsRouteImport } from './routes/news'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as DocumentsRouteImport } from './routes/documents'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdmissionsRouteImport } from './routes/admissions'
@@ -75,6 +77,16 @@ const EventsRoute = EventsRouteImport.update({
   path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocumentsRoute = DocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -107,6 +119,8 @@ export interface FileRoutesByFullPath {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -124,6 +138,8 @@ export interface FileRoutesByTo {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -142,6 +158,8 @@ export interface FileRoutesById {
   '/admissions': typeof AdmissionsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
+  '/documents': typeof DocumentsRoute
   '/events': typeof EventsRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
@@ -161,6 +179,8 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/dashboard'
+    | '/documents'
     | '/events'
     | '/faq'
     | '/gallery'
@@ -178,6 +198,8 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/dashboard'
+    | '/documents'
     | '/events'
     | '/faq'
     | '/gallery'
@@ -195,6 +217,8 @@ export interface FileRouteTypes {
     | '/admissions'
     | '/careers'
     | '/contact'
+    | '/dashboard'
+    | '/documents'
     | '/events'
     | '/faq'
     | '/gallery'
@@ -213,6 +237,8 @@ export interface RootRouteChildren {
   AdmissionsRoute: typeof AdmissionsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
+  DocumentsRoute: typeof DocumentsRoute
   EventsRoute: typeof EventsRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
@@ -297,6 +323,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/documents': {
+      id: '/documents'
+      path: '/documents'
+      fullPath: '/documents'
+      preLoaderRoute: typeof DocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -341,6 +381,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdmissionsRoute: AdmissionsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
+  DocumentsRoute: DocumentsRoute,
   EventsRoute: EventsRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,

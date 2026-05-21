@@ -31,19 +31,27 @@ function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* HERO */}
-      <section className="relative bg-primary text-primary-foreground overflow-hidden torn-bottom pb-4">
+      <section className="relative bg-primary text-primary-foreground overflow-hidden torn-bottom pb-4 min-h-[90vh] flex flex-col">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          <iframe
+            className="w-[110vw] h-[61.875vw] min-h-[100vh] min-w-[177.77vh] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-50"
+            src="https://www.youtube.com/embed/oJigZ4PWbHc?autoplay=1&mute=1&controls=0&loop=1&playlist=oJigZ4PWbHc&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3"
+            allow="autoplay; encrypted-media"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/80 backdrop-blur-[1px]" />
+        </div>
+
         <div
-          className="absolute inset-0 bg-primary/70"
-        />
-        <div
-          className="absolute inset-0 mix-blend-overlay opacity-30"
+          className="absolute inset-0 z-1 pointer-events-none opacity-40 mix-blend-overlay"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.55), transparent 45%), radial-gradient(circle at 85% 70%, rgba(43, 88, 126, 0.6), transparent 55%)",
+              "radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.4), transparent 45%), radial-gradient(circle at 85% 70%, rgba(43, 88, 126, 0.5), transparent 55%)",
           }}
         />
+
         <Header />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-32">
+        <div className="relative z-10 flex-1 flex items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-32">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div>
               <p className="text-gold uppercase tracking-[0.3em] text-xs font-bold mb-5">Welcome to</p>
