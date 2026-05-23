@@ -37,7 +37,7 @@ const photos = [
     { src: primary, title: "Primary School Activities", category: "Academic" },
     { src: secondary, title: "Secondary School Lab", category: "Academic" },
     { src: campus, title: "School Grounds", category: "Campus" },
-    { src: collab, title: "Group Project Work", category: "Students" },
+    { src: primary, title: "Group Project Work", category: "Students" },
     { src: heroImg, title: "Learning in Action", category: "Academic" },
 ];
 

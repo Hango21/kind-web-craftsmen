@@ -13,9 +13,10 @@ import {
   Compass,
   ArrowRight,
 } from "lucide-react";
-import hero from "@/assets/hero-student.jpg";
+import hero from "@/assets/coming-soon.jpg";
 import collab from "@/assets/students-collab.jpg";
-import campus from "@/assets/campus.jpg";
+import campus from "@/assets/compound-facility.jpg";
+import banner from "@/assets/register-banner.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({

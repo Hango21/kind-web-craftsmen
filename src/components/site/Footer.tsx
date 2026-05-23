@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Linkedin, Twitter, MapPin, Mail, Phone } from "lucide-react";
-import logo from "@/assets/nova-logo.png";
+import logo from "@/assets/nova-logo.jpg";
 
 export function Footer() {
   return (
@@ -44,7 +44,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-primary-foreground/80">
             <li className="flex gap-2"><MapPin size={16} className="text-gold shrink-0 mt-0.5" /> Lemikura Sub-City, Salite Mihiret, Addis Ababa</li>
             <li className="flex gap-2"><Mail size={16} className="text-gold shrink-0 mt-0.5" /> info@novainternationalschool.et</li>
-            <li className="flex gap-2"><Phone size={16} className="text-gold shrink-0 mt-0.5" /> +251 XXX XXX XXX</li>
+            <li className="flex gap-2"><Phone size={16} className="text-gold shrink-0 mt-0.5" /> +251 981 888222 / 0981 888333</li>
           </ul>
           <div className="flex gap-3 mt-5">
             {[

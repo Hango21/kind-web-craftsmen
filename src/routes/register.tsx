@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHero } from "@/components/site/PageHero";
 import { Footer } from "@/components/site/Footer";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { Upload } from "lucide-react";
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "https://api.novainternationalschool.et";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -24,25 +27,74 @@ function Field({ label, ...props }: React.InputHTMLAttributes<HTMLInputElement> 
   );
 }
 
+// Map display names to the backend field names expected by multer
+const docFields: { label: string; fieldName: string }[] = [
+  { label: "Birth Certificate", fieldName: "birthCertificate" },
+  { label: "Report Cards", fieldName: "reportCards" },
+  { label: "ID Documents", fieldName: "idDocuments" },
+];
+
 function Register() {
   const [sending, setSending] = useState(false);
   const [program, setProgram] = useState("");
-  const [files, setFiles] = useState<{ [key: string]: boolean }>({});
+  const [fileStatus, setFileStatus] = useState<{ [key: string]: string }>({});
+  const fileRefs = useRef<{ [key: string]: File | null }>({});
 
-  const allFilesUploaded = ["Birth Certificate", "Report Cards", "ID Documents"].every(d => files[d]);
+  const allFilesUploaded = docFields.every(d => fileStatus[d.fieldName]);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!allFilesUploaded) {
-      toast.error("Please upload all required documents (Birth Certificate, Report Cards, and ID) before submitting.");
+      toast.error("Please upload all required documents before submitting.");
       return;
     }
     setSending(true);
-    setTimeout(() => {
+
+    const form = e.target as HTMLFormElement;
+
+    // Build FormData with both text fields and files
+    const formData = new FormData();
+    formData.append("parentName", (form.elements.namedItem("parentName") as HTMLInputElement).value);
+    formData.append("parentPhone", (form.elements.namedItem("parentPhone") as HTMLInputElement).value);
+    formData.append("parentEmail", (form.elements.namedItem("parentEmail") as HTMLInputElement).value);
+    formData.append("occupation", (form.elements.namedItem("occupation") as HTMLInputElement).value);
+    formData.append("studentName", (form.elements.namedItem("studentName") as HTMLInputElement).value);
+    formData.append("dob", (form.elements.namedItem("dob") as HTMLInputElement).value);
+    formData.append("grade", (form.elements.namedItem("grade") as HTMLInputElement)?.value || "");
+    formData.append("prevSchool", (form.elements.namedItem("prevSchool") as HTMLInputElement).value);
+    formData.append("medical", (form.elements.namedItem("medical") as HTMLTextAreaElement).value);
+    formData.append("needs", (form.elements.namedItem("needs") as HTMLTextAreaElement).value);
+
+    // Append actual files
+    for (const doc of docFields) {
+      const file = fileRefs.current[doc.fieldName];
+      if (file) {
+        formData.append(doc.fieldName, file);
+      }
+    }
+
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/applications`, {
+        method: "POST",
+        body: formData, // No Content-Type header — browser sets it with boundary
+      });
+
+      const json = await res.json();
+
       setSending(false);
-      (e.target as HTMLFormElement).reset();
-      toast.success("Application submitted! Our admissions team will be in touch.");
-    }, 800);
+      if (res.ok) {
+        form.reset();
+        setProgram("");
+        setFileStatus({});
+        fileRefs.current = {};
+        toast.success("Application submitted! Our admissions team will be in touch.");
+      } else {
+        toast.error(json.error || "Failed to submit application. Please try again.");
+      }
+    } catch {
+      setSending(false);
+      toast.error("Network error. Please try again later.");
+    }
   }
 
   return (
@@ -125,18 +177,24 @@ function Register() {
 
           <div>
             <h3 className="font-display font-bold text-xl text-primary mb-4">Upload Documents <span className="text-destructive">*</span></h3>
+            <p className="text-xs text-muted-foreground mb-4">Accepted formats: PDF, JPG, PNG, DOC (max 10MB each)</p>
             <div className="grid sm:grid-cols-3 gap-4">
-              {["Birth Certificate", "Report Cards", "ID Documents"].map((d) => (
-                <label key={d} className={`cursor-pointer rounded-xl border-2 border-dashed p-5 text-center text-sm flex flex-col items-center gap-2 transition ${files[d] ? "bg-green-50/50 border-green-500 text-green-700" : "border-border hover:border-gold text-foreground"}`}>
-                  <Upload className={files[d] ? "text-green-600" : "text-primary"} />
-                  <span className="font-medium">{d}</span>
-                  <span className="text-xs text-muted-foreground">{files[d] ? "✓ Uploaded" : "Click to upload"}</span>
+              {docFields.map((doc) => (
+                <label key={doc.fieldName} className={`cursor-pointer rounded-xl border-2 border-dashed p-5 text-center text-sm flex flex-col items-center gap-2 transition ${fileStatus[doc.fieldName] ? "bg-green-50/50 border-green-500 text-green-700" : "border-border hover:border-gold text-foreground"}`}>
+                  <Upload className={fileStatus[doc.fieldName] ? "text-green-600" : "text-primary"} />
+                  <span className="font-medium">{doc.label}</span>
+                  <span className="text-xs text-muted-foreground">
+                    {fileStatus[doc.fieldName] || "Click to upload"}
+                  </span>
                   <input
                     type="file"
+                    accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
                     required
                     onChange={(e) => {
-                      if (e.target.files?.length) {
-                        setFiles(prev => ({ ...prev, [d]: true }));
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        fileRefs.current[doc.fieldName] = file;
+                        setFileStatus(prev => ({ ...prev, [doc.fieldName]: `✓ ${file.name}` }));
                       }
                     }}
                     className="hidden"

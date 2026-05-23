@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { BookOpen, CalendarDays, FileText, LayoutDashboard, LogOut, MessageSquare, Settings, User } from "lucide-react";
-import logo from "@/assets/nova-logo.png";
+import logo from "@/assets/nova-logo.jpg";
 
 export const Route = createFileRoute("/dashboard")({
     head: () => ({ meta: [{ title: "Dashboard — NOVA Portal" }] }),

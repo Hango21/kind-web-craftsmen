@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StaffRouteImport } from './routes/staff'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as PracticalInformationRouteImport } from './routes/practical-information'
@@ -27,11 +26,6 @@ import { Route as AdmissionsRouteImport } from './routes/admissions'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const StaffRoute = StaffRouteImport.update({
-  id: '/staff',
-  path: '/staff',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -130,7 +124,6 @@ export interface FileRoutesByFullPath {
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/staff': typeof StaffRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -149,7 +142,6 @@ export interface FileRoutesByTo {
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/staff': typeof StaffRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -169,7 +161,6 @@ export interface FileRoutesById {
   '/practical-information': typeof PracticalInformationRoute
   '/register': typeof RegisterRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/staff': typeof StaffRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -190,7 +181,6 @@ export interface FileRouteTypes {
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
-    | '/staff'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -209,7 +199,6 @@ export interface FileRouteTypes {
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
-    | '/staff'
   id:
     | '__root__'
     | '/'
@@ -228,7 +217,6 @@ export interface FileRouteTypes {
     | '/practical-information'
     | '/register'
     | '/sitemap.xml'
-    | '/staff'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -248,18 +236,10 @@ export interface RootRouteChildren {
   PracticalInformationRoute: typeof PracticalInformationRoute
   RegisterRoute: typeof RegisterRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StaffRoute: typeof StaffRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/staff': {
-      id: '/staff'
-      path: '/staff'
-      fullPath: '/staff'
-      preLoaderRoute: typeof StaffRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -392,7 +372,6 @@ const rootRouteChildren: RootRouteChildren = {
   PracticalInformationRoute: PracticalInformationRoute,
   RegisterRoute: RegisterRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StaffRoute: StaffRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

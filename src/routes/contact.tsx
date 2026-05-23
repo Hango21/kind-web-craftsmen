@@ -5,6 +5,7 @@ import { SectionTitle } from "@/components/site/SectionTitle";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { apiPost } from "@/lib/api";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,16 +20,30 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const [sending, setSending] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSending(true);
 
-    // Simulating sending to info@novainternationalschool.et
-    setTimeout(() => {
-      setSending(false);
-      (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    const result = await apiPost("/api/contact", payload);
+
+    setSending(false);
+    if (result.ok) {
+      form.reset();
       toast.success("Message sent! Your inquiry has been forwarded to info@novainternationalschool.et. We will respond shortly.");
-    }, 1200);
+    } else {
+      toast.error(result.error || "Failed to send message. Please try again.");
+    }
   }
 
   return (
@@ -49,7 +64,7 @@ function Contact() {
             </li>
             <li className="flex gap-4">
               <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><Phone /></div>
-              <div><div className="font-semibold">Phone</div><div className="text-sm text-muted-foreground">+251 XXX XXX XXX</div></div>
+              <div><div className="font-semibold">Phone</div><div className="text-sm text-muted-foreground">+251 981 888222 / 0981 888333</div></div>
             </li>
             <li className="flex gap-4">
               <div className="h-11 w-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0"><Mail /></div>

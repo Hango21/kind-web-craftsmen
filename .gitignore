@@ -33,3 +33,4 @@ dist-ssr
 *.zip
 dist/
 node_modules/
+.env

@@ -12,6 +12,9 @@ CREATE TABLE applications (
     prev_school VARCHAR(255),
     medical_conditions TEXT,
     special_needs TEXT,
+    birth_certificate VARCHAR(500),
+    report_cards VARCHAR(500),
+    id_documents VARCHAR(500),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -19,4 +22,14 @@ CREATE TABLE newsletters (
     id SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     subscribed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE contacts (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50),
+    subject VARCHAR(255),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

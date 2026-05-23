@@ -4,8 +4,8 @@ import { Footer } from "@/components/site/Footer";
 import { SectionTitle } from "@/components/site/SectionTitle";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import ec from "@/assets/early-childhood.jpg";
-import primary from "@/assets/primary.jpg";
-import secondary from "@/assets/secondary.jpg";
+import primary from "@/assets/coming-soon.jpg";
+import secondary from "@/assets/register-banner.jpg";
 
 export const Route = createFileRoute("/admissions")({
   head: () => ({

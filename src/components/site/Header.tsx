@@ -1,16 +1,16 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun, ChevronDown, Search } from "lucide-react";
-import logo from "@/assets/nova-logo.png";
+import logo from "@/assets/nova-logo.jpg";
 import { useTheme } from "@/hooks/use-theme";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About Us", sub: [{ to: "/about", label: "Our Vision" }, { to: "/staff", label: "Staff Directory" }, { to: "/gallery", label: "Gallery" }] },
+  { to: "/about", label: "About Us", sub: [{ to: "/about", label: "Our Vision" }, { to: "/gallery", label: "Gallery" }] },
   { to: "/admissions", label: "Admissions", sub: [{ to: "/admissions", label: "How to Apply" }, { to: "/register", label: "Start Application" }, { to: "/faq", label: "FAQ" }] },
   { to: "/our-school", label: "Our School", sub: [{ to: "/our-school", label: "Curriculum & Facilities" }, { to: "/news", label: "News & Updates" }, { to: "/events", label: "Events Calendar" }] },
   { to: "/practical-information", label: "Practical Info", sub: [{ to: "/practical-information", label: "Term Dates & Transport" }, { to: "/documents", label: "Document Repository" }, { to: "/portal", label: "Parent Portal" }] },
-  { to: "/careers", label: "Careers", sub: [{ to: "/careers", label: "Open Roles" }, { to: "/staff", label: "Meet the Team" }] },
+  { to: "/careers", label: "Careers", sub: [{ to: "/careers", label: "Open Roles" }] },
   { to: "/contact", label: "Contact", sub: [{ to: "/contact", label: "Get in Touch" }, { to: "/faq", label: "FAQ" }] },
 ];
 
