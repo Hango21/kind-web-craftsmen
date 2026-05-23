@@ -1,11 +1,21 @@
 ---
 deployment:
   tasks:
-    - export PATH=/opt/cpanel/ea-nodejs18/bin/:$PATH
+    - export PATH=/opt/cpanel/ea-nodejs20/bin/:$PATH
     - export FRONTEND_DEST=$HOME/public_html
     - export BACKEND_DEST=$HOME/backend
+    - export CMS_DEST=$HOME/cms_app
+    - /bin/mkdir -p $FRONTEND_DEST
+    - /bin/mkdir -p $BACKEND_DEST
+    - /bin/mkdir -p $CMS_DEST
+    # 1. Deploy Frontend
     - npm install
     - npm run build
     - /bin/cp -R dist/* $FRONTEND_DEST
-    - /bin/mkdir -p $BACKEND_DEST
+    # 2. Deploy Backend
     - /bin/cp -R backend/* $BACKEND_DEST
+    # 3. Deploy CMS
+    - cd cms && npm install
+    - cd cms && npm run build
+    - cd ..
+    - /bin/cp -R cms/* $CMS_DEST
