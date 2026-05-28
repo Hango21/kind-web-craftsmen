@@ -22,6 +22,8 @@ function Contact() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending) return;
+    
     setSending(true);
 
     const form = e.target as HTMLFormElement;
@@ -86,15 +88,31 @@ function Contact() {
             { name: "subject", label: "Subject", type: "text" },
           ].map((f) => (
             <div key={f.name}>
-              <label className="text-xs font-semibold text-foreground">{f.label}</label>
-              <input required name={f.name} type={f.type} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40" />
+              <label htmlFor={f.name} className="text-xs font-semibold text-foreground block mb-1">{f.label}</label>
+              <input 
+                id={f.name}
+                required 
+                name={f.name} 
+                type={f.type} 
+                className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary transition-colors"
+              />
             </div>
           ))}
           <div>
-            <label className="text-xs font-semibold text-foreground">Message</label>
-            <textarea required name="message" rows={4} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40" />
+            <label htmlFor="message" className="text-xs font-semibold text-foreground block mb-1">Message</label>
+            <textarea 
+              id="message"
+              required 
+              name="message" 
+              rows={4} 
+              className="w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm outline-none focus:border-primary transition-colors"
+            />
           </div>
-          <button disabled={sending} className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3 font-semibold hover:bg-primary-deep transition">
+          <button 
+            type="submit"
+            disabled={sending} 
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3 font-semibold hover:bg-primary-deep transition disabled:opacity-50"
+          >
             {sending ? "Sending…" : (<>Send Message <Send size={16} /></>)}
           </button>
         </form>

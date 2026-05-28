@@ -19,10 +19,17 @@ export const Route = createFileRoute("/register")({
 });
 
 function Field({ label, ...props }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
+  const id = props.name || label.toLowerCase().replace(/\s+/g, '-');
   return (
     <label className="block">
-      <span className="text-xs font-semibold">{label}</span>
-      <input {...props} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40" />
+      <span className="text-xs font-semibold block">{label}</span>
+      <input 
+        {...props} 
+        id={id}
+        autoComplete="off"
+        className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm" 
+        style={{ outline: 'none' }}
+      />
     </label>
   );
 }
@@ -123,8 +130,15 @@ function Register() {
               <Field label="Student Name" required name="studentName" />
               <Field label="Date of Birth (DD/MMM/YYYY)" type="text" placeholder="e.g. 15/Sep/2018" required name="dob" />
               <label className="block">
-                <span className="text-xs font-semibold">Program Applying For</span>
-                <select required name="program" value={program} onChange={(e) => setProgram(e.target.value)} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm">
+                <span className="text-xs font-semibold block">Program Applying For</span>
+                <select 
+                  required 
+                  name="program" 
+                  value={program} 
+                  onChange={(e) => setProgram(e.target.value)} 
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm"
+                  style={{ outline: 'none' }}
+                >
                   <option value="">Select program...</option>
                   <option value="ec">Early Childhood</option>
                   <option value="primary">Primary School</option>
@@ -134,8 +148,13 @@ function Register() {
 
               {program && (
                 <label className="block">
-                  <span className="text-xs font-semibold">Specific Grade Level</span>
-                  <select required name="grade" className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm">
+                  <span className="text-xs font-semibold block">Specific Grade Level</span>
+                  <select 
+                    required 
+                    name="grade" 
+                    className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm"
+                    style={{ outline: 'none' }}
+                  >
                     <option value="">Select specific grade...</option>
                     {program === "ec" && (
                       <>
@@ -165,12 +184,24 @@ function Register() {
             <h3 className="font-display font-bold text-xl text-primary mb-4">Additional Information</h3>
             <div className="grid gap-4">
               <label className="block">
-                <span className="text-xs font-semibold">Medical Conditions</span>
-                <textarea name="medical" rows={3} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm" />
+                <span className="text-xs font-semibold block">Medical Conditions</span>
+                <textarea 
+                  name="medical" 
+                  rows={3} 
+                  autoComplete="off"
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm" 
+                  style={{ outline: 'none' }}
+                />
               </label>
               <label className="block">
-                <span className="text-xs font-semibold">Special Learning Needs</span>
-                <textarea name="needs" rows={3} className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm" />
+                <span className="text-xs font-semibold block">Special Learning Needs</span>
+                <textarea 
+                  name="needs" 
+                  rows={3} 
+                  autoComplete="off"
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-2.5 text-sm" 
+                  style={{ outline: 'none' }}
+                />
               </label>
             </div>
           </div>

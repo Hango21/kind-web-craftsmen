@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #2B587E;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pure HTML Test Form</h1>
+    <p>This has NO React, NO Tailwind, NO JavaScript. If this freezes, it's a browser/system issue.</p>
+    
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name" placeholder="Type your name">
+        
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Type your email">
+        
+        <label>Message:</label>
+        <textarea name="message" rows="4" placeholder="Type your message"></textarea>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -4,6 +4,7 @@ const cors = require("cors");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
+const nodemailer = require("nodemailer");
 const db = require("./db");
 
 const app = express();
@@ -11,6 +12,17 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Email transporter setup
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    port: process.env.SMTP_PORT || 587,
+    secure: false,
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+});
 
 // --- File Upload Setup ---
 // Files will be stored in: /home/yourusername/uploads/applications/
@@ -124,10 +136,35 @@ app.post("/api/contact", async (req, res) => {
     try {
         const { name, email, phone, subject, message } = req.body;
 
+        // Save to database
         const newContact = await db.query(
             `INSERT INTO contacts (name, email, phone, subject, message) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
             [name, email, phone, subject, message]
         );
+
+        // Send email notification
+        try {
+            await transporter.sendMail({
+                from: `"NOVA Contact Form" <${process.env.SMTP_USER}>`,
+                to: "info@novainternationalschool.et",
+                replyTo: email,
+                subject: `Contact Form: ${subject}`,
+                html: `
+                    <h2>New Contact Form Submission</h2>
+                    <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Phone:</strong> ${phone}</p>
+                    <p><strong>Subject:</strong> ${subject}</p>
+                    <p><strong>Message:</strong></p>
+                    <p>${message.replace(/\n/g, '<br>')}</p>
+                    <hr>
+                    <p><em>Submitted at: ${new Date().toLocaleString()}</em></p>
+                `,
+            });
+        } catch (emailErr) {
+            console.error("Email sending failed:", emailErr.message);
+            // Continue even if email fails - data is saved in DB
+        }
 
         res.status(201).json({
             message: "Message received! We will respond shortly.",
